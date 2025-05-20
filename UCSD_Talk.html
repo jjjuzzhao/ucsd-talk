@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UCSD Talk</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #eaeef3;
+    }
+
+    .navbar {
+      background-color: #005a9c;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 50px;
+      height: 80px;
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 25px;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-left: 40px;
+      font-weight: bold;
+    }
+
+    .container {
+      background-color: white;
+      width: 90vw;
+      min-height: calc(100vh - 70px);
+      margin: 30px auto;
+      padding: 60px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    /* 新的标题样式 */
+    .main-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .title-line-1 {
+      font-size: 48px;
+      font-weight: bold;
+    }
+
+    .title-line-2 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .trident-icon {
+      width: 40px;
+      height: 40px;
+      vertical-align: middle;
+    }
+
+    .section-title {
+      font-weight: bold;
+      font-size: 22px;
+      margin-top: 40px;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #000;
+      display: inline-block;
+      padding-bottom: 6px;
+    }
+
+    .college-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px 20px;
+      margin-top: 30px;
+      margin-bottom: 50px;
+    }
+
+    .college {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .daily-topic-box {
+      display: flex;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .topic {
+      background-color: #007aff;
+      color: white;
+      flex: 1;
+      padding: 30px 0;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .college-buttons {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .daily-topic-box {
+        flex-direction: column;
+      }
+
+      .topic {
+        width: 100%;
+      }
+
+      .container {
+        padding: 30px 20px;
+      }
+
+      .navbar .logo {
+        font-size: 18px;
+      }
+
+      .navbar a {
+        font-size: 14px;
+        margin-left: 16px;
+      }
+
+      .title-line-1 {
+        font-size: 28px;
+      }
+
+      .title-line-2 {
+        font-size: 20px;
+        margin-top: 8px;
+        gap: 8px;
+      }
+
+      .trident-icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">UCSD Talk</div>
+    <div>
+      <a href="#">Forum</a>
+      <a href="#">Events</a>
+      <a href="#">Login</a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- 新的标题结构 -->
+    <div class="main-title">
+      <div class="title-line-1">Welcome to UCSD Talk</div>
+      <div class="title-line-2">
+        Where Tritons Talk
+        <img src="Triton_Logo.png" alt="Triton_Logo" class="trident-icon">
+      </div>
+    </div>
+
+    <!-- 学院入口 -->
+    <div class="section-title">Find Your College</div>
+    <div class="college-buttons">
+      <div class="college"><div class="circle"><img src="Revelle.png" alt="Revelle"></div>Revelle</div>
+      <div class="college"><div class="circle"><img src="Muir.png" alt="Muir"></div>Muir</div>
+      <div class="college"><div class="circle"><img src="Marshall.png" alt="Marshall"></div>Marshall</div>
+      <div class="college"><div class="circle"><img src="ERC.png" alt="ERC"></div>ERC</div>
+      <div class="college"><div class="circle"><img src="Warren.png" alt="Warren"></div>Warren</div>
+      <div class="college"><div class="circle"><img src="Sixth.png" alt="Sixth"></div>Sixth</div>
+      <div class="college"><div class="circle"><img src="Seventh.png" alt="Seventh"></div>Seventh</div>
+      <div class="college"><div class="circle"><img src="Eighth.png" alt="Eighth"></div>Eighth</div>
+    </div>
+
+    <!-- 今日话题 -->
+    <div class="section-title">Daily Topic</div>
+    <div class="daily-topic-box">
+      <div class="topic">Question of the Day</div>
+      <div class="topic">Poll</div>
+      <div class="topic">Suggest</div>
+    </div>
+
+  </div>
+
+</body>
+</html>
