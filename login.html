@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>UCSD Talk - Login</title>
+  <style>
+    body {
+      font-family: Arial;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      background-color: #f2f4f8;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    input {
+      padding: 10px;
+      margin: 10px;
+      width: 250px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      background-color: #007aff;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #user-info {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Login to UCSD Talk</h1>
+
+  <input type="email" id="email" placeholder="Email"><br>
+  <input type="password" id="password" placeholder="Password"><br>
+
+  <button onclick="window.location.href='register.html'">Register</button>
+  <button onclick="signIn()">Login</button>
+  <!--<button onclick="signOut()">Logout</button> -->
+
+  <div id="user-info"></div>
+
+  <!-- Firebase 登录逻辑 -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      signOut,
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDqO_gifUcMFF7m7wmKKXVMoaaSbt1O1TQ",
+      authDomain: "ucsd-talk.firebaseapp.com",
+      projectId: "ucsd-talk",
+      storageBucket: "ucsd-talk.appspot.com",
+      messagingSenderId: "189945996553",
+      appId: "1:189945996553:web:a0f520140072c18bb35fd8"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // 登录
+    window.signIn = () => {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          alert("Login successful!");
+          window.location.href = "index.html"; // ✅ 登录成功跳转主页
+        })
+        .catch(err => alert(err.message));
+    };
+
+    // 登出
+    
+    //window.signOut = () => {
+      //signOut(auth)
+      //.then(() => {
+        //alert("You have been logged out.");
+            //window.location.href = "login.html";  // ✅ 登出后跳转主页
+        //});
+    //};
+    
+    // 登录状态监听（显示用户名）
+    onAuthStateChanged(auth, (user) => {
+      const info = document.getElementById("user-info");
+      if (user) {
+        info.innerHTML = `👋 Logged in as: <b>${user.displayName || user.email}</b>`;
+      } else {
+        info.innerHTML = '';
+      }
+    });
+  </script>
+</body>
+</html>

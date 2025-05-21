@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>UCSD Talk - Register</title>
+  <style>
+    body {
+      font-family: Arial;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      background-color: #f2f4f8;
+    }
+    input {
+      padding: 10px;
+      margin: 10px;
+      width: 250px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      background-color: #007aff;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Register an Account</h1>
+
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
+  <input type="text" id="username" placeholder="Username">
+
+  <div style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
+    <button onclick="register()">Sign Up</button>
+    <button onclick="window.location.href='login.html'" style="background-color: #ccc; color: black;">Back</button>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      updateProfile
+    } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDqO_gifUcMFF7m7wmKKXVMoaaSbt1O1TQ",
+      authDomain: "ucsd-talk.firebaseapp.com",
+      projectId: "ucsd-talk",
+      storageBucket: "ucsd-talk.appspot.com",
+      messagingSenderId: "189945996553",
+      appId: "1:189945996553:web:a0f520140072c18bb35fd8"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    window.register = () => {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const username = document.getElementById("username").value;
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          return updateProfile(userCredential.user, {
+            displayName: username
+          });
+        })
+        .then(() => {
+          alert("Registration successful!");
+          window.location.href = "index.html";
+        })
+        .catch(err => alert(err.message));
+    };
+  </script>
+</body>
+</html>
